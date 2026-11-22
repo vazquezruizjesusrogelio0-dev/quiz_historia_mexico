@@ -10,7 +10,7 @@ Ingeniería en Sistemas y Tecnologías de la Información. (ISTTI)
 
 **Alumno**: Jesús Rogelio Vázquez Ruiz
 
-**Matricula**: 202648651
+**Matricula**: 202648561
 
 **Profesora**: Escobar Acevedo Adelina
 
