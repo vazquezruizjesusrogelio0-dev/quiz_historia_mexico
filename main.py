@@ -129,7 +129,7 @@ def comenzar_partida():
 
 # Comprobacion de respuestas
 def comprobar_respuesta():
-    global respuesta_selec, puntos, vidas, respondida
+    global respuesta_selec, puntos, vidas, respondida, fallos, aciertos
 
     respuesta_usuario = respuesta_selec.get()
 
@@ -146,11 +146,13 @@ def comprobar_respuesta():
     # Comprobar si la respuesta es correcta
     if respuesta_usuario == preguntas_juego[numero_pregunta][5]:
         puntos += 10
+        aciertos += 1
         puntos_juego.config(text=f"Puntos: {puntos}")
         messagebox.showinfo("¡Correcto!", "Tu respuesta es correcta")
 
     else:
         vidas -= 1
+        fallos += 1
         vidas_juego.config(text=f"Vidas: {vidas}")
         messagebox.showinfo("¡Incorrecto!", f"Te restan: {vidas}, vidas")
 
@@ -207,17 +209,26 @@ def ver_resultados():
     etiqueta_puntos = tk.Label(frame_resultados, text=f"Puntaje final: {puntos}")
     etiqueta_puntos.pack()
 
+    etiqueta_aciertos = tk. Label(frame_resultados, text=f"Aciertos: {aciertos}")
+    etiqueta_aciertos.pack()
+
+    etiqueta_fallos = tk. Label(frame_resultados, text=f"Fallos: {fallos}")
+    etiqueta_fallos.pack()
+    
+
     boton_reiniciar = tk.Button(frame_resultados, text="Volver a jugar", command=reiniciar_partida)
     boton_reiniciar.pack()
 
 
 # Reiniciar partida
 def reiniciar_partida():
-    global vidas, puntos, numero_pregunta, respondida
+    global vidas, puntos, numero_pregunta, respondida, fallos , aciertos
 
     vidas = 3
     puntos = 0
     numero_pregunta = 0
+    fallos = 0
+    aciertos = 0
     respondida = False
 
     frame_resultados.pack_forget()
